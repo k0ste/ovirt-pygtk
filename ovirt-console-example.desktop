@@ -3,6 +3,7 @@ Name=oVirt console nginx.balancer
 Comment=Connect Spice to VM frontend
 Comment[ru_RU]=Подключить Spice к ВМ frontend
 Exec=ovirt-pygtk.py --command 'console nginx.balancer' --domain 'rhev'
+Icon=ovirt-pygtk
 Terminal=false
 Type=Application
 Encoding=UTF-8

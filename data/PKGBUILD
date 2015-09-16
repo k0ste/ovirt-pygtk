@@ -1,0 +1,28 @@
+# Maintainer: Konstantin Shalygin (k0ste@cn.ru)
+
+pkgname='ovirt-pygtk'
+pkgver='0.1'
+pkgrel='1'
+pkgdesc='Run defined command via ovirt-engine-cli after auth as current user'
+arch=('any')
+url="https://github.com/k0ste/${pkgname}"
+depends=('python2' 'pygtk' 'ovirt-engine-cli')
+optdepends=('virt-viewer: SPICE and VNC remote console support')
+license=('GPL 3')
+source=("$pkgname::git+${url}")
+sha256sums=("SKIP")
+install="${pkgname}.install"
+
+package() {
+  pushd "${srcdir}/${pkgname}"
+  install -Dm775 "${pkgname}.py" "$pkgdir/usr/bin/${pkgname}.py"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/doc/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+
+  pushd "icons"
+    for e in 16x16 32x32 48x48 128x128; do
+      install -Dm644 "$e" "$pkgdir/usr/share/icons/hicolor/$e/apps/${pkgname}.png"
+    done
+
+  popd
+}
