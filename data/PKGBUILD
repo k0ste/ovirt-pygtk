@@ -19,7 +19,7 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 
   pushd "icons"
-    for e in "16x16 32x32 48x48 128x128"; do
+    for e in 16x16 32x32 48x48 128x128; do
       install -Dm644 "${e}" "${pkgdir}/usr/share/icons/hicolor/${e}/apps/${pkgname}.png"
     done
   popd
